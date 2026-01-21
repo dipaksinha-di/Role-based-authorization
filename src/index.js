@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
+const authRoutes = require("./routes/authRoutes");
 
 //DATABASE CONNECTION
 dbConnect();
@@ -11,9 +12,7 @@ const app = express();
 app.use(express.json());
 
 //ROUTES
-app.get("/", (req, res) => {
-  res.send("Role Based Authorization");
-});
+app.use("/api/auth", require("./routes/authRoutes"));
 
 //SERVER
 
